@@ -1,0 +1,5 @@
+## 关于WIFI_tool
+- 目标是实现一个扫描可用wifi热点，并可以选择连入，断开的python脚本，最初使用命令行输出的‘netsh wlan show networks mode=bssid’命令结果来进行扫描wifi，可是发现在linux中实现输出多余数据过多，于是使用pywifi库中的函数进行扫描。
+- 连入wifi模块最初是自己添加配置文件的形式来进行连接，并无法区分free和加密wifi，后来的想法是通过扫描wifi，返回一个wifi_list的表单，然后通过匹配ssid，来匹配相对应的配置文件，加密类型等，这里遇到的问题就是如何区分free wifi以及加密wifi，在师兄的帮助下发现加密wifi和free的区别在于加密方法AKM有所区别，在free wifi中akm为NONE，而通常的加密wifi为WPA2-PSK，所以脚本中我们通过判断AKM来判断选择连入的wifi是否加密来选择是否填入密码。
+- 接下来的问题在优化的过程中发现，在选择连入wifi的过程中，使用输入SSID来选择wifi并不人性化，因为某些wifi的ssid过长较难输入，于是进行改进，在输出wifi_list的过程中对wifi进行编号，然后通过序号进行选择，这里师兄提到了在输出的wifi_list中可以使用list本身的序号进行选择，解决了序号和wifi的对应问题
+- 优化了在使用每个模块式创建选择网卡的过程，使得其在主函数中创建并选择网卡，一次性解决问题

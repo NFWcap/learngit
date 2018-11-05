@@ -1,2 +1,6 @@
 My first git file
-Creat a new branch is quick & simple
+<<<<<<< HEAD
+Creat a new branch is quick and simple
+=======
+Creat a new branch is quick and simple
+>>>>>>> feature1

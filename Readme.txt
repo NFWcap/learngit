@@ -1,2 +1,2 @@
 My first git file
-Creat a new branch is quick
+Creat a new branch is quick and simple
